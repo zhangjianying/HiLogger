@@ -91,4 +91,16 @@ HiLogger.d(Arrays.asList("foo", "bar"));
 ```java
 HiLogger.json("{ \"key\": 3, \"value\": \"something\"}");
 HiLogger.json("[{ \"key\": 3, \"value\": \"something\"}]");
+
+ZSONObject jsonObj = new ZSONObject();
+jsonObj.put("1", "aaa");
+jsonObj.put("2", "bbb");
+
+ZSONObject jsonObjWapper = new ZSONObject();
+jsonObjWapper.put("JJ",jsonObj);
+HiLogger.json(jsonObjWapper);
+
+ZSONArray jsonArray = new ZSONArray();
+jsonArray.add(jsonObj);
+HiLogger.json(jsonArray);
 ```
