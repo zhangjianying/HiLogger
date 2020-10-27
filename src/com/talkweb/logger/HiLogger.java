@@ -3,6 +3,8 @@ package com.talkweb.logger;
 
 import com.talkweb.logger.imp.LoggerPrinter;
 import ohos.hiviewdfx.HiLog;
+import ohos.utils.zson.ZSONArray;
+import ohos.utils.zson.ZSONObject;
 
 import static com.talkweb.logger.Utils.requireNonNull;
 
@@ -68,6 +70,15 @@ public class HiLogger {
     }
 
     public static void json(String json) {
+        printer.json(json);
+    }
+
+    public static void json(ZSONObject json) {
+        printer.json(json);
+    }
+
+
+    public static void json(ZSONArray json) {
         printer.json(json);
     }
 

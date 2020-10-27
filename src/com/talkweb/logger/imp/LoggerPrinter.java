@@ -17,6 +17,8 @@ public class LoggerPrinter implements Printer {
     private final ThreadLocal<String> localTag = new ThreadLocal<>();
     private final List<LogAdapter> logAdapters = new ArrayList<>();
 
+    private JsonFormatTool jsonFormat = new JsonFormatTool();
+
     @Override
     public Printer t(String tag) {
         if (tag != null) {
@@ -113,9 +115,9 @@ public class LoggerPrinter implements Printer {
     }
 
     @Override
-    public void json(String json) {
+    public synchronized void json(String json) {
         if (Utils.isEmpty(json)) {
-            d("Empty/Null json content");
+            w("Empty/Null json content");
             return;
         }
         try {
@@ -123,12 +125,14 @@ public class LoggerPrinter implements Printer {
             if (json.startsWith("{")) {
                 ZSONObject jsonObject = ZSONObject.stringToZSON(json);
                 String message = ZSONObject.toZSONString(jsonObject);
+                message = jsonFormat.formatJson(message);
                 d(message);
                 return;
             }
             if (json.startsWith("[")) {
                 ZSONArray jsonArray = ZSONArray.stringToZSONArray(json);
                 String message = jsonArray.toString();
+                message = jsonFormat.formatJson(message);
                 d(message);
                 return;
             }
@@ -136,5 +140,25 @@ public class LoggerPrinter implements Printer {
         } catch (Exception e) {
             e("Invalid Json");
         }
+    }
+
+    @Override
+    public synchronized void json(ZSONObject json) {
+        if (isNull(json)) {
+            w("Empty/Null json content");
+            return;
+        }
+        String message = jsonFormat.formatJson(ZSONObject.toZSONString(json));
+        d(message);
+    }
+
+    @Override
+    public synchronized void json(ZSONArray json) {
+        if (isNull(json)) {
+            w("Empty/Null json content");
+            return;
+        }
+        String message = jsonFormat.formatJson(json.toString());
+        d(message);
     }
 }

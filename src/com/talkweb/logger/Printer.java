@@ -1,5 +1,8 @@
 package com.talkweb.logger;
 
+import ohos.utils.zson.ZSONArray;
+import ohos.utils.zson.ZSONObject;
+
 /**
  * 打印对象
  */
@@ -23,6 +26,10 @@ public interface Printer {
     void e(Throwable throwable, String message, Object... args);
 
     void json(String json);
+
+    void json(ZSONObject json);
+
+    void json(ZSONArray json);
 
     Printer t(String tag);
 }
