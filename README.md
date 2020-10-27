@@ -2,6 +2,10 @@
 简单.美观.实用的日志打印工具类
 Simple, pretty and powerful logger for XXXX
 
+该项目参考
+https://github.com/orhanobut/logger.git
+在使用形式上尽可能保持一致.只需将类名由Logger替换成HiLogger.
+
 ### 使用步骤 (Setup)
 
 #### 下载源码 (Download)
@@ -61,8 +65,6 @@ import static com.talkweb.logger.HiLogger.*;
 ### 输出效果 (Output)
 
 ![image-20201027155155871](README.assets/image-20201027155155871.png)
-
-
 
 ### 更多可选API (Options)
 
