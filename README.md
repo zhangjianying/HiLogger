@@ -118,6 +118,8 @@ HiLogger.json(jsonArray);
 | 功能 | HiLogger |  logger    |
 | ---- | -------- | ---- |
 | d/i/v/w/e/wtf等方法     |   支持       |   支持   |
+| list/set/array     |    支持      | 支持     |
+| map     |    支持      | 支持     |
 | json     |    支持      | 支持     |
 | xml     |   不支持       |  支持    |
 | 输出到logcat    |   支持(输出到HiLog面板)       |  支持    |
