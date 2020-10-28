@@ -37,6 +37,11 @@ public class HMOSLogAdapter implements LogAdapter {
         formatStrategy.log(priority, tag, message);
     }
 
+    @Override
+    public void destory() {
+        //nothing
+    }
+
 
     public static int getDomain() {
         return domain;

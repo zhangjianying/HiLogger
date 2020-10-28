@@ -13,4 +13,7 @@ public interface LogAdapter {
     boolean isLoggable(int priority, String tag);
 
     void log(int priority, String tag, String message);
+
+    //通知适配器释放资源
+    void destory();
 }

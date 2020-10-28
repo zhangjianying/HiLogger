@@ -1,5 +1,7 @@
 package com.talkweb.logger;
 
+import ohos.hiviewdfx.HiLog;
+
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.net.UnknownHostException;
@@ -118,7 +120,6 @@ public class Utils {
     }
 
 
-
     /**
      * 判断对象是否为null
      *
@@ -166,6 +167,25 @@ public class Utils {
             throw new NullPointerException();
         }
         return object;
+    }
+
+    public static String logLevel(int value) {
+        switch (value) {
+            case HiLog.LOG_APP:
+                return "VERBOSE";
+            case HiLog.DEBUG:
+                return "DEBUG";
+            case HiLog.INFO:
+                return "INFO";
+            case HiLog.WARN:
+                return "WARN";
+            case HiLog.ERROR:
+                return "ERROR";
+            case HiLog.FATAL:
+                return "ASSERT";
+            default:
+                return "UNKNOWN";
+        }
     }
 
 }

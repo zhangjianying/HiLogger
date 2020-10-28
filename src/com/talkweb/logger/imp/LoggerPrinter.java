@@ -34,6 +34,10 @@ public class LoggerPrinter implements Printer {
 
     @Override
     public void clearLogAdapters() {
+        //通知释放 独占资源
+        for (LogAdapter adp : logAdapters) {
+            adp.destory();
+        }
         logAdapters.clear();
     }
 
@@ -51,13 +55,19 @@ public class LoggerPrinter implements Printer {
         _log(INFO, null, message, args);
     }
 
-
+    @Override
     public void v(String message, Object... args) {
         _log(VERBOSE, null, message, args);
     }
 
+    @Override
     public void w(String message, Object... args) {
         _log(WARN, null, message, args);
+    }
+
+    @Override
+    public void wtf(String message, Object... args) {
+        _log(ASSERT, null, message, args);
     }
 
     public void e(String message, Object... args) {

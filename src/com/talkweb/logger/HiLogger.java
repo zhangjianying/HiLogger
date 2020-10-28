@@ -69,6 +69,10 @@ public class HiLogger {
         printer.e(throwable, message, args);
     }
 
+    public static void wtf(String message, Object... args) {
+        printer.wtf(message, args);
+    }
+
     public static void json(String json) {
         printer.json(json);
     }

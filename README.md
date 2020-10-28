@@ -42,7 +42,14 @@ HiLogger.addLogAdapter(new HMOSLogAdapter(formatStrategy,0x333) {
      }
 });
 ```
+如果需要保存输出到日志文件:
+```java
+HiLogger.addLogAdapter(new DiskLogAdapter(this)); //this 为AbilityContext类型
+```
 
+日志文件默认保存在:
+
+  /data/user/0/[应用包名]/logger/logs_0.csv, logs_0.csv默认按500k大小对日志进行分名保存.如logs_1.csv,logs_2.csv,logs_3.csv....依次类推
 
 ####  使用 (And use)
 在需要打印日志的地方
@@ -104,3 +111,16 @@ ZSONArray jsonArray = new ZSONArray();
 jsonArray.add(jsonObj);
 HiLogger.json(jsonArray);
 ```
+
+
+### 与原库功能对比 (contrast)
+
+| 功能 | HiLogger |  logger    |
+| ---- | -------- | ---- |
+| d/i/v/w/e/wtf等方法     |   支持       |   支持   |
+| json     |    支持      | 支持     |
+| xml     |   不支持       |  支持    |
+| 输出到logcat    |   支持(输出到HiLog面板)       |  支持    |
+| 输出到文件     |   支持       |  支持    |
+
+

@@ -25,6 +25,8 @@ public interface Printer {
 
     void e(Throwable throwable, String message, Object... args);
 
+    void wtf(String message, Object... args);
+
     void json(String json);
 
     void json(ZSONObject json);
